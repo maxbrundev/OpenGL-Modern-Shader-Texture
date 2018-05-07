@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <IncludePath>$(SolutionDir)Dependencies\glew\include;$(SolutionDir)Dependencies\glfw\$(Platform)\include;$(SolutionDir)Dependencies\soil\include;$(ProjectDir)includes;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\glfw\$(Platform)\lib-vc2015;$(SolutionDir)Dependencies\glew\lib\Release\$(Platform);$(SolutionDir)Dependencies\soil\lib\$(Platform);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>glew32.lib;glfw3dll.lib;SOIL.lib;opengl32.lib</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(SolutionDir)Dependencies\glfw\$(Platform)\lib-vc2015\glfw3.dll $(OutDir)
+copy $(SolutionDir)Dependencies\glew\bin\Release\$(Platform)\glew32.dll $(OutDir)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>
